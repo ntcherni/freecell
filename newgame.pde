@@ -1,9 +1,17 @@
-
 class Game { 
     constructor(_gamestate) {
-        this.gamestate = "";
+        this.gamestate = {};
+    }
+
+    newGame() {
     }
 }
+
+JSON Object game; 
+
+game = new JSONObject(); 
+
+
 
 void drawBoard() {
 
