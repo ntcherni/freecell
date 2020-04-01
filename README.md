@@ -1,46 +1,32 @@
-// Author: Nick Tchernikov
-// Title: README for FreeCell for NGX Interactive Assessment
-// Lanngauge: Processing.js
-// Date: December 21, 2019
+Rules 
+-----
 
-Impressions:
-------------
-This was an awesome challenge. My first thought was to use HTML and the Canvas element to accomplish this task Then, I found "Processing.js" which is a javascript port of the Processing language which is suited for interactive animation work. I thought I was would try out as I recall Processing had simplified "drawing" features and would be well-suited to some fancier animations in the future.
+* 52 playing cards
+* Starting position: 
+** 8 columns
+*** 4 columns x 7 cards each
+*** 4 columns x 6 cards each
+* Cards in these columns referred to as the Tableau
+* Win state: 
+** the 4 HomeCells contain cards in ascending order of identical suit: 
+*** Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K
+* Lose state: 
+** No more moves available
+* Exposed card at the bottom of each column is available for play
+* Exposed cards may be moved to any FreeCell 
+* Exposed cards and those in FreeCells may be moved in to a Tableau cell if 
+** Tableau cell is empty
+** Moving the card to the Tableau cell will form a descending sequence of cards in alternating suit colour (red/black)
+*Shortcut: 
+* Empty FreeCells allow you to move an entire sequence of cards
+** The limit of the sequence of cards is the number of open FreeCells + 1
+* Supermove with empty Tableau available: 
+** The limit of the sequence of cards that can be moved is doubled
 
-I only got so far with the limited time and a few difficulties, but I have a solid foundation made here and believe that I would be able to accomplish a good recreation of FreeCell, and intend to keep working on it now to completion! It took some time also to figure out how to organize this with Object-Oriented Programming, but it will make for easier modification later. 
+* Serialized Game State: 
+** 4 x FreeCells
+** 4 x HomeCells
+** 8 Columns
 
-Current functionality:
-----------------------
-- Player is presented with "Click Anywhere to Start Game" screen
-- Cards appear uniquely shuffled and organized into 8 columns
-- There are appopriately 52 cards with suit and value labels
-- Player is able to click-drag-drop only the bottom cards from each column
-
-Future Goals:
--------------
-- Release of a card should drop it on the original or another column
-- When dragging cards, the one being dragged should appear 'on top'
-- Clicking a card should send it to 'Free Cells' or 'Tableau'
-- Creating a Game class to store game state and detect won state
-- Export of JSON object of game state / ability to import same
-- Styling cleanups - cards should have multiple values and suits, with a large suit in the middle
-- Adding Free Cells and Tableau and logic that goes along with it
-- Detecting a won game state and displaying an End screen
-
-Difficulties:
-------------- 
-- Although I had done some Processing work before, it took some time to get reacquainted with the specific syntax of the language 
-- Figuring out an elegant way to "shuffle" the cards proved to be a challenge, never would have thought that would trip me up for so long. I had to use a defined function to accomplish randomizing an array of integers, and coding every card as a number with the form "[value][suit]" and later unpacking it with the substring function
-- Figuring out that creating a Column class was the way to go took a bit of time, at first I thought of a grid system of "Spots"
-- I had not gotten to the JSON I/O stage of the project, but I imagine that I would create a class called Game and be able to store the entire game state there as an object, and be able to export or import a JSON file to change the arrangment of the cards
-- Ultimately, a lot of time was spent getting acquainted with Processing and fiddling with data types/objects
-
-
-
-
-
-
-
-
-
-
+* Drawing the game: 
+** Processing draws in order of the draw commands
